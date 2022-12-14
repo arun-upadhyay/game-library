@@ -22,10 +22,18 @@ export default class Games extends Component {
 
     render() {
         return (<div>
-            {Object.entries(this.state.games).map(([key, value]) => (
-                <Game key={key} title={value.title} rating={value.rating} review={value.review}
-                      last_played={value.last_played}/>
-            ))}
+            <table>
+                <thead>
+                <td> Title</td>
+                <td> Rating</td>
+                <td> Review</td>
+                </thead>
+                {Object.entries(this.state.games).map(([key, value]) => (
+                    <Game key={key} title={value.title} rating={value.rating} review={value.review}
+                          last_played={value.last_played}/>
+                ))}
+            </table>
+
         </div>);
     }
 
