@@ -7,8 +7,20 @@ class GameService {
         return fetch(this.baseUri + "api/game", {
             method: 'GET',
             credentials: "same-origin",
+
             redirect: 'follow'
         });
+    }
+
+    deleteGameById(id) {
+        const uri = this.baseUri + "api/game/" + id;
+        fetch(uri, {
+            method: 'DELETE',
+            redirect: 'follow'
+        })
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     getGameById(id) {

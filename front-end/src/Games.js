@@ -1,6 +1,6 @@
 import {Component} from "react";
 import gameService from "./http/GameService";
-import {Game} from "./Game";
+import Game from "./Game";
 
 export default class Games extends Component {
 
@@ -14,6 +14,7 @@ export default class Games extends Component {
     componentDidMount() {
         gameService.getAllGames().then(r => r.text()).then(r => {
             const obj = JSON.parse(r);
+
             this.setState({
                 games: obj
             });
@@ -23,13 +24,13 @@ export default class Games extends Component {
     render() {
         return (<div>
             <table>
-                <thead>
-                <td> Title</td>
-                <td> Rating</td>
-                <td> Review</td>
-                </thead>
+                <tr>
+                    <td> Title</td>
+                    <td> Rating</td>
+                    <td> Review</td>
+                </tr>
                 {Object.entries(this.state.games).map(([key, value]) => (
-                    <Game key={key} title={value.title} rating={value.rating} review={value.review}
+                    <Game key={key} id={value.id} title={value.title} rating={value.rating} review={value.review}
                           last_played={value.last_played}/>
                 ))}
             </table>
