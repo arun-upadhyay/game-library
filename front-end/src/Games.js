@@ -10,7 +10,7 @@ class Games extends Component {
         super(props);
 
         this.state = {
-            editState: false
+            data: false,
         }
         this.changeWord = this.changeWord.bind(this);
     }
@@ -20,15 +20,20 @@ class Games extends Component {
     }
 
     changeWord(val) {
-        this.setState({
-            editState: val
+        this.props.games.forEach((x) => {
+            if (x.id == val) {
+                console.log(x)
+                this.setState({
+                    data: x
+                })
+            }
         })
     }
 
     render() {
         return (<div>
 
-            <AddGame editState={this.state.editState}/>
+            <AddGame data={this.state.data}/>
 
             <table>
                 <tr>

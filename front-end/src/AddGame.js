@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {connect} from 'react-redux';
-import {addNewGame} from "./Action/ActionTypes";
+import {addNewGame, updateGame} from "./Action/ActionTypes";
 
 class AddGame extends Component {
     constructor(props) {
@@ -21,13 +21,19 @@ class AddGame extends Component {
 
     addNewGame(event) {
         event.preventDefault();
-        const data = {
+        let data = {
             'title': this.state.title,
             'rating': this.state.rating,
             'review': this.state.review,
             'last_played': this.state.last_played
         }
-        this.props.addNewGame(data);
+        if (this.props.data.id) {
+            data = [...data, {'id': this.props.data.id}]
+            this.props.updateGame(data);
+        } else {
+            this.props.addNewGame(data);
+        }
+
     }
 
     setTitle(event) {
@@ -62,17 +68,19 @@ class AddGame extends Component {
         return (
             <div>
                 <h1>
-                    {this.props.editState}
+                    {this.props.data.id}
                 </h1>
                 <form onSubmit={this.addNewGame}>
                     <table>
                         <tr>
                             <td>Name</td>
-                            <td><input type="text" name="title" onChange={this.setTitle}/></td>
+                            <td><input type="text" name="title" onChange={this.setTitle} value={this.props.data.title}/>
+                            </td>
                         </tr>
                         <tr>
                             <td>Rating</td>
-                            <td><select name="rating" id="rating" onChange={this.setRating}>
+                            <td><select name="rating" id="rating" onChange={this.setRating}
+                                        value={this.props.data.rating}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -82,14 +90,16 @@ class AddGame extends Component {
                         </tr>
                         <tr>
                             <td>Review</td>
-                            <td><textarea name="rating" id="rating" onChange={this.setReview}/></td>
+                            <td><textarea name="rating" id="rating" onChange={this.setReview}
+                                          value={this.props.data.review}/></td>
                         </tr>
                         <tr>
                             <td>Last played</td>
                             <td><input
                                 type="datetime-local"
                                 name="last_played"
-                                value="2017-06-01T08:30" onChange={this.setLastPlayed}/></td>
+                                value="2017-06-01T08:30" onChange={this.setLastPlayed}
+                                value={this.props.data.last_played}/></td>
                         </tr>
                         <tr>
                             <td>
@@ -105,5 +115,5 @@ class AddGame extends Component {
 }
 
 export default connect(null,
-    {addNewGame})(AddGame);
+    {addNewGame, updateGame})(AddGame);
 

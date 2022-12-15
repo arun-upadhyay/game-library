@@ -36,6 +36,24 @@ class GameService {
         })
     }
 
+    updateGame(data) {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "title": data.title,
+            "rating": data.rating,
+            "review": data.review,
+            "last_played": data.last_played
+        });
+        return fetch(this.baseUri + "api/game/" + data.id, {
+            method: 'PUT',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        })
+    }
+
     getGameById(id) {
         return fetch(this.baseUri + "api/game/".id, {
             method: 'GET',
@@ -43,18 +61,6 @@ class GameService {
             redirect: 'follow'
         });
     }
-
-    // saveGame() {
-    //     let form_data = new FormData();
-    //     form_data.append("username", username);
-    //     form_data.append("password", password);
-    //     return fetch("api/auth/login", {
-    //         method: 'POST',
-    //         body: form_data,
-    //         redirect: 'follow'
-    //     })
-    // }
-
 }
 
 export default new GameService("http://localhost:8000/");
