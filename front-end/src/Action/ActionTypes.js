@@ -12,6 +12,8 @@ export function getGames() {
 }
 
 export function deleteGame(id) {
+
+    console.log("Deleting item");
     return dispatch => GameService.deleteGameById(id).then(res => {
         if (res.ok && res.status === 200) {
             dispatch({

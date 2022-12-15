@@ -61,6 +61,9 @@ class AddGame extends Component {
     render() {
         return (
             <div>
+                <h1>
+                    {this.props.editState}
+                </h1>
                 <form onSubmit={this.addNewGame}>
                     <table>
                         <tr>

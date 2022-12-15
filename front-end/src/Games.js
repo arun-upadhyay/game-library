@@ -12,14 +12,14 @@ class Games extends Component {
         this.state = {
             editState: false
         }
-        this.changeEditableState = this.changeEditableState.bind(this);
+        this.changeWord = this.changeWord.bind(this);
     }
 
     componentDidMount() {
         this.props.getGames();
     }
 
-    changeEditableState(val) {
+    changeWord(val) {
         this.setState({
             editState: val
         })
@@ -28,7 +28,7 @@ class Games extends Component {
     render() {
         return (<div>
 
-            <AddGame/>
+            <AddGame editState={this.state.editState}/>
 
             <table>
                 <tr>
@@ -38,7 +38,7 @@ class Games extends Component {
                 </tr>
                 {Object.entries(this.props.games).map(([key, value]) => (
                     <Game key={key} id={value.id} title={value.title} rating={value.rating} review={value.review}
-                          last_played={value.last_played}/>
+                          last_played={value.last_played} changeWord={this.changeWord}/>
                 ))}
             </table>
 

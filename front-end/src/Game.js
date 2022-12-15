@@ -19,10 +19,13 @@ class Game extends Component {
                 <td>{this.props.review}</td>
                 <td>{this.props.last_played}</td>
                 <td>
-                    <button>Edit</button>
+                    <button onClick={() => {
+                        this.props.changeWord(this.props.id)
+                    }}>Edit
+                    </button>
                 </td>
                 <td>
-                    <button>Delete
+                    <button onClick={deleteGame(this.props.id)}>Delete
                     </button>
                 </td>
             </tr>
@@ -47,4 +50,4 @@ class Game extends Component {
 }
 
 export default connect(null,
-    {deleteGame, editGame})(Game);
+    {deleteGame})(Game);

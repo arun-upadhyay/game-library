@@ -17,6 +17,7 @@ const gameReducer = (state = initialState, action) => {
             let filterData = state.games.filter((game) => {
                 return game.id != action.data
             });
+            console.log(filterData)
             return returnData(filterData);
 
         default:
