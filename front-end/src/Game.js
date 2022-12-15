@@ -1,7 +1,9 @@
 import {Component} from "react";
-import GameService from "./http/GameService";
+import {connect} from 'react-redux';
+import {deleteGame, editGame} from "./Action/ActionTypes";
 
-export default class Game extends Component {
+class Game extends Component {
+
     constructor(props) {
         super(props);
         this.deleteGame = this.deleteGame.bind(this);
@@ -17,15 +19,10 @@ export default class Game extends Component {
                 <td>{this.props.review}</td>
                 <td>{this.props.last_played}</td>
                 <td>
-                    <button onClick={() => {
-                        this.editGame(this.props.id)
-                    }}>Edit
-                    </button>
+                    <button>Edit</button>
                 </td>
                 <td>
-                    <button onClick={() => {
-                        this.deleteGame(this.props.id)
-                    }}>Delete
+                    <button>Delete
                     </button>
                 </td>
             </tr>
@@ -33,14 +30,21 @@ export default class Game extends Component {
     }
 
     deleteGame(id) {
-        console.log("Deleting game..." + id)
-        GameService.deleteGameById(id).then(r => {
-            console.log(r.text());
-        });
+        this.props.deleteGame(id)
     }
 
     editGame(id) {
-        console.log("editing game..." + id)
+        // // this.props.editGame({
+        // //     id: id,
+        // //     state: true
+        // // })
+        //
+        // this.setState({
+        //     shouldEditProp: true
+        // })
+        // console.log(this.state.shouldEditProp);
     }
-
 }
+
+export default connect(null,
+    {deleteGame, editGame})(Game);

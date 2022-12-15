@@ -7,20 +7,33 @@ class GameService {
         return fetch(this.baseUri + "api/game", {
             method: 'GET',
             credentials: "same-origin",
-
             redirect: 'follow'
         });
     }
 
     deleteGameById(id) {
-        const uri = this.baseUri + "api/game/" + id;
-        fetch(uri, {
+        return fetch(this.baseUri + "api/game/" + id, {
             method: 'DELETE',
+            credentials: "same-origin",
+            redirect: 'follow'
+        });
+    }
+
+    addNewGama(data) {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const raw = JSON.stringify({
+            "title": data.title,
+            "rating": data.rating,
+            "review": data.review,
+            "last_played": data.last_played
+        });
+        return fetch(this.baseUri + "api/game/", {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
             redirect: 'follow'
         })
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
     }
 
     getGameById(id) {
