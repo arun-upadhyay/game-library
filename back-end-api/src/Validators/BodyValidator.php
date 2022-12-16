@@ -2,6 +2,9 @@
 
 namespace Src\Validators;
 
+/**
+ * Input validator
+ */
 class BodyValidator
 {
     public static function Validate($input)

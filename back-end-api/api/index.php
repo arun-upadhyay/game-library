@@ -32,7 +32,6 @@ if (isset($uri[3])) {
 }
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
-// pass the request method and post ID to the Post and process the HTTP request:
 $dbConnection = new DatabaseConnector();
 $controller = new GameController($dbConnection->connect(), $requestMethod, $gameId);
 $controller->processRequest();

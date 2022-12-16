@@ -2,10 +2,13 @@
 
 namespace Src;
 
+/**
+ * DB connector
+ */
 class DatabaseConnector
 {
 
-    private $dbConn = null;
+    private $dbConn;
 
     public function __construct()
     {

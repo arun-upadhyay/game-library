@@ -4,6 +4,9 @@ namespace Src;
 
 use Src\Validators\BodyValidator;
 
+/**
+ * Game Model database operation.
+ */
 class GameModel implements IGame
 {
     private $db;
@@ -31,7 +34,7 @@ class GameModel implements IGame
             ));
             $resultSet = ['Game Created'];
         } catch (\PDOException $e) {
-            $resultSet = [$e->getMessage()];
+            exit($e->getMessage());
         } finally {
             return $this->createSucessReponse($resultSet);
         }
