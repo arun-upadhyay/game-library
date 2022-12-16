@@ -6,7 +6,7 @@ import thunk from "redux-thunk"
 import {combineReducers, createStore, applyMiddleware} from "redux";
 import {Provider} from 'react-redux'
 import gameReducer from "./reducers/GameRuducer";
-
+// Add redux store.
 const store = createStore(combineReducers({
     gameReducer
 }), applyMiddleware(thunk));

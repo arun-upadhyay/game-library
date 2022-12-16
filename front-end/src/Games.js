@@ -2,7 +2,7 @@ import {Component} from "react";
 import Game from "./Game";
 import {connect} from 'react-redux';
 import {getGames} from "./Action/ActionTypes";
-import AddGame from "./AddGame";
+import AddUpdateGame from "./AddUpdateGame";
 
 class Games extends Component {
 
@@ -33,7 +33,7 @@ class Games extends Component {
     render() {
         return (<div>
 
-            <AddGame data={this.state.data}/>
+            <AddUpdateGame data={this.state.data}/>
 
             <table>
                 <tr>

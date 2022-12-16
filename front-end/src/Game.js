@@ -1,13 +1,11 @@
 import {Component} from "react";
 import {connect} from 'react-redux';
-import {deleteGame, editGame} from "./Action/ActionTypes";
+import {deleteGame} from "./Action/ActionTypes";
 
 class Game extends Component {
 
     constructor(props) {
         super(props);
-        this.deleteGame = this.deleteGame.bind(this);
-        this.editGame = this.editGame.bind(this);
     }
 
     render() {
@@ -25,27 +23,13 @@ class Game extends Component {
                     </button>
                 </td>
                 <td>
-                    <button onClick={deleteGame(this.props.id)}>Delete
+                    <button onClick={() => {
+                        this.props.deleteGame(this.props.id)
+                    }}>Delete
                     </button>
                 </td>
             </tr>
         );
-    }
-
-    deleteGame(id) {
-        this.props.deleteGame(id)
-    }
-
-    editGame(id) {
-        // // this.props.editGame({
-        // //     id: id,
-        // //     state: true
-        // // })
-        //
-        // this.setState({
-        //     shouldEditProp: true
-        // })
-        // console.log(this.state.shouldEditProp);
     }
 }
 

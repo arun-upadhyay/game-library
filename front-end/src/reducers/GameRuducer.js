@@ -7,6 +7,13 @@ const returnData = (games) => {
         editState: false
     };
 }
+/**
+ * Centralized redux store to keep state of the application
+ *
+ * @param state
+ * @param action
+ * @returns {{games, editState: boolean}|{games: *[]}}
+ */
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_GAME':

@@ -1,3 +1,6 @@
+/**
+ * HTTP Service Handler to communicate with an API
+ */
 class GameService {
     constructor(uri) {
         this.baseUri = uri;
@@ -24,8 +27,8 @@ class GameService {
         myHeaders.append("Content-Type", "application/json");
         const raw = JSON.stringify({
             "title": data.title,
-            "rating": data.rating,
             "review": data.review,
+            "rating": data.rating,
             "last_played": data.last_played
         });
         return fetch(this.baseUri + "api/game/", {
@@ -63,4 +66,4 @@ class GameService {
     }
 }
 
-export default new GameService("http://localhost:8000/");
+export default new GameService(process.env.REACT_APP_API_URL);
