@@ -23,3 +23,14 @@ Front End:
 4. run `npm start`
 Your front-end can access `http://127.0.0.1:3000/` and API endpiont should be http://127.0.0.1:8000/
 
+# List all containers (only IDs)
+docker ps -aq
+# Stop all running containers
+docker stop $(docker ps -aq)
+# Remove all containers
+docker rm $(docker ps -aq)
+# Remove all images
+docker rmi $(docker images -q)
+
+# Run docker composer as 
+docker-compose -f docker-composer.yml up
