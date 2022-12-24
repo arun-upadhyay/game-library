@@ -34,3 +34,23 @@ docker rmi $(docker images -q)
 
 # Run docker composer as 
 docker-compose -f docker-composer.yml up
+
+Step 2: Execute docker
+Run container
+
+docker-compose up -d --build
+this may take a moment. After the container has been setup, check the status with
+
+docker-compose ps
+you should see three containers are running.
+
+Step 3: Install Composer dependencies
+Bash into your container:
+
+docker-compose exec app bash
+Install composer dependencies (this may also take a moment):
+cd /var/www/public
+composer install
+
+Congratulations. Your app should now be accessible under http://localhost:8005
+
