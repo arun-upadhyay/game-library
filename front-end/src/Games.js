@@ -21,7 +21,7 @@ class Games extends Component {
 
     changeWord(val) {
         this.props.games.forEach((x) => {
-            if (x.id == val) {
+            if (x.id === val) {
                 console.log(x)
                 this.setState({
                     data: x

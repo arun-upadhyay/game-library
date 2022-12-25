@@ -1,3 +1,10 @@
+NOTE: if you are using same docker-compose.yml file for both dev and production environment, then you need to run development environment with 
+```docker-compose up web-dev``` 
+if you ```run docker-compose up``` then it will by default run all the containers defined inside docker-compose file.
+
+Source:
+https://gist.github.com/przbadu/929fc2b0d5d4cd78a5efe76d37f891b6
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
