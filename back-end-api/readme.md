@@ -16,7 +16,11 @@ We assume that you add this to an existing project, as since Laravel 8 docker sh
 
 Copy all files except `.env` and `readme.md` in your current project folder. Overwrite the credentions from your `.env` locally with those provided here. If you dont want to overwrite database name and user, then please adjust the file in `docker-compose/mysql/init/01-databaes.sql` according to your needs.
 
-## Step 2: Execute docker
+## Step 2: Crate an external docker network gateway if not already created. 
+docker network ls 
+docker network create game-communication-gateway
+
+## Step 3: Execute docker
 
 Run container
 
@@ -33,7 +37,7 @@ this may take a moment. After the container has been setup, check the status wit
 you should see three containers are running.
 
 
-## Step 3: Install Composer dependencies
+## Step 4: Install Composer dependencies
 
 Bash into your container:
 

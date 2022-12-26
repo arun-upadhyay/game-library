@@ -3,7 +3,7 @@ services:
   app:
     build:
       args:
-        user: sammy
+        user: arun
         uid: 1000
       context: ./
       dockerfile: Dockerfile.dev
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./:/var/www
     networks:
-      - lahmi
+      - game-communication-gateway
 
   db:
     image: mysql:5.7
@@ -33,7 +33,7 @@ services:
     ports:
       - 3307:3306
     networks:
-      - lahmi
+      - game-communication-gateway
 
   nginx:
     image: nginx:alpine
@@ -46,11 +46,11 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - lahmi
+      - game-communication-gateway
 
 networks:
-  lahmi:
-    driver: bridge
+  game-communication-gateway:
+    external: true
 
 volumes:
   dbdata:

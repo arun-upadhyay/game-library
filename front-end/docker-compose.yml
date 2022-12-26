@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
+    networks:
+      - game-communication-gateway
     volumes:
       - "/app/node_modules"
       - "./:/app"
@@ -16,3 +18,8 @@ services:
     build: .
     ports:
       - '1337:80'
+    networks:
+      - game-communication-gateway
+networks:
+  game-communication-gateway:
+    external: true

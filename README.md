@@ -33,7 +33,7 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images -q)
 
 # Run docker composer as 
-<<<<<<< HEAD
+
 docker-compose -f docker-composer.yml up
 
 Step 2: Execute docker
@@ -54,10 +54,6 @@ cd /var/www/public
 composer install
 
 Congratulations. Your app should now be accessible under http://localhost:8005
-
-=======
-docker-compose -f docker-composer.yml up
->>>>>>> 59d4845... Added composer file
 
 Reference:
 https://github.com/truthseekers/php-docker-simple
