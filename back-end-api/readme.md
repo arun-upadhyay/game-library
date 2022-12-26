@@ -47,10 +47,12 @@ Install composer dependencies (this may also take a moment):
   cd /var/www/public
   composer install
   ```
+
 MySQL can be accessed as 
 ```
-docker exec -it laravel-docker-db-1 bash
+docker exec -it back-end-api-db-1 bash
 ```
+
 Congratulations. Your app should now be accessible under `localhost:8005`
 
 List all containers (only IDs)

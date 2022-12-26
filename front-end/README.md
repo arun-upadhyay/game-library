@@ -1,9 +1,23 @@
 NOTE: if you are using same docker-compose.yml file for both dev and production environment, then you need to run development environment with 
 ```docker-compose up web-dev``` 
-if you ```run docker-compose up``` then it will by default run all the containers defined inside docker-compose file.
+if you run ```docker-compose up``` then it will by default run all the containers defined inside docker-compose file.
 
 Source:
 https://gist.github.com/przbadu/929fc2b0d5d4cd78a5efe76d37f891b6
+
+Note: In case you are running into CORS error:
+Windows + r
+``
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=<some dreictory location
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=C:\Users\arun-\Downloads
+``
+Open application at ```http://localhost:3000/``` (development)
+
+Run it as Production
+``docker-compose up web-prod -d``
+Access web on ``http://localhost:1337/`` (prod)
+
+
 
 # Getting Started with Create React App
 

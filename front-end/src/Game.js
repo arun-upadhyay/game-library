@@ -3,11 +3,6 @@ import {connect} from 'react-redux';
 import {deleteGame} from "./Action/ActionTypes";
 
 class Game extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <tr>

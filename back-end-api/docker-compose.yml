@@ -30,8 +30,6 @@ services:
       - dbdata:/var/lib/mysql
       - ./docker-compose/mysql/my.cnf:/etc/mysql/my.cnf
       - ./docker-compose/mysql/init:/docker-entrypoint-initdb.d
-      - dump:/docker-entrypoint-initdb.d
-
     ports:
       - 3307:3306
     networks:
