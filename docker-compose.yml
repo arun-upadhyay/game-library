@@ -2,21 +2,16 @@ version: "3.7"
 services:
   app:
     build:
-      args:
-        user: arun
-        uid: 1000
       context: ./
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.backend
     working_dir: /var/www/
     environment:
       - COMPOSER_MEMORY_LIMIT=-1
     depends_on:
       - db
     volumes:
-      - ./:/var/www
-    networks:
-      - game-communication-gateway
-
+      - /var/www/vendor
+      - ./back-end-api/public:/var/www/public
   db:
     image: mysql:5.7
     environment:
@@ -32,8 +27,6 @@ services:
       - ./docker-compose/mysql/init:/docker-entrypoint-initdb.d
     ports:
       - 3307:3306
-    networks:
-      - game-communication-gateway
 
   nginx:
     image: nginx:alpine
@@ -43,16 +36,24 @@ services:
       - db
       - app
     volumes:
-      - ./:/var/www
+      - ./back-end-api/public:/var/www/public
       - ./docker-compose/nginx:/etc/nginx/conf.d/
-    networks:
-      - game-communication-gateway
 
-networks:
-  game-communication-gateway:
-    external: true
-
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend.prod
+    ports:
+      - 1337:80
+  web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend.dev
+    ports:
+      - "3012:3000"
+    volumes:
+      - "/app/node_modules"
+      - "./front-end:/app"
 volumes:
   dbdata:
     driver: local
-

@@ -18,6 +18,7 @@ class DatabaseConnector
         $user = $_ENV['DB_USERNAME'];
         $pass = $_ENV['DB_PASSWORD'];
 
+
         try {
             $this->dbConn = new \PDO(
                 "mysql:host=$host;port=$port;dbname=$db",
