@@ -13,7 +13,7 @@ services:
       - /var/www/vendor
       - ./back-end-api/public:/var/www/public
   db:
-    image: mysql:5.7
+    image: mysql:5.5
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
